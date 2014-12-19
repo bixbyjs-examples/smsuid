@@ -9,6 +9,8 @@ exports = module.exports = function(logger) {
   
   function enqueue(req, res, next) {
     console.log('TODO: enqueue message');
+    console.log(req.body)
+    next();
   }
   
   function respond(req, res, next) {
