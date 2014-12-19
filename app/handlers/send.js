@@ -5,12 +5,19 @@ var bodyParser = require('body-parser')
   , errorHandler = require('errorhandler');
 
 
-exports = module.exports = function(logger) {
+exports = module.exports = function(mq, logger) {
   
   function enqueue(req, res, next) {
-    console.log('TODO: enqueue message');
-    console.log(req.body)
-    next();
+    var sms = {
+      to: req.body.to,
+      message: req.body.message
+    }
+    
+    logger.debug('Enqueueing SMS message');
+    mq.enqueue('message/sms', sms, function(err) {
+      if (err) { return next(err); }
+      next();
+    });
   }
   
   function respond(req, res, next) {
@@ -35,4 +42,4 @@ exports = module.exports = function(logger) {
 /**
  * Component annotations.
  */
-exports['@require'] = [ 'logger' ];
+exports['@require'] = [ 'mq/adapter', 'logger' ];

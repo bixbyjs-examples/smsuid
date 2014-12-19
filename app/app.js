@@ -8,6 +8,7 @@ var IoC = require('electrolyte'),
 // Configure IoC container with required components.
 IoC.use('handlers', IoC.node(__dirname + '/handlers'));
 IoC.use(require('bixby-express'));
+IoC.use('mq', require('bixby-crane'));
 IoC.use('sd', require('bixby-sd'));
 IoC.use(require('bixby-common'));
 
@@ -16,6 +17,7 @@ var app = bootable(express());
 app.phase(bootable.di.initializers(__dirname + '/init'));
 app.phase(bootable.di.routes(__dirname + '/routes'));
 app.phase(IoC.create('sd/registry'));
+app.phase(IoC.create('mq/adapter'));
 app.phase(IoC.create('boot/httpserver'));
 app.phase(IoC.create('sd/boot/announce'));
 
