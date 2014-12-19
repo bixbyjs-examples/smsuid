@@ -1,0 +1,21 @@
+{
+  "name": "smsuid",
+  "description": "UI for sending text messages.",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/bixbyjs-examples/smsuid.git"
+  },
+  "dependencies": {
+    "bixby-common": "git://github.com/bixbyjs/bixby-common.git",
+    "bixby-crane": "git://github.com/bixbyjs/bixby-crane.git#feature/bootable",
+    "bixby-express": "git://github.com/bixbyjs/bixby-express.git",
+    "bixby-sd": "git://github.com/bixbyjs/bixby-sd.git#feature/bootable",
+    "body-parser": "^1.10.0",
+    "bootable": "^0.2.4",
+    "ejs": "^1.0.0",
+    "electrolyte": "0.0.6",
+    "errorhandler": "^1.3.0",
+    "express": "^4.10.6",
+    "morgan": "^1.5.0"
+  }
+}
